@@ -18,7 +18,7 @@ Widget cartScreen(CartNotifier cartNotifier) {
           0,
           (sum, item) =>
               sum + ((item.discount - item.unitPrice) * item.quantity));
-      double taxes = 4.0; // Example tax calculation (optional)
+      double taxes = itemsTotal /100*18;
 
       double toBePaid = itemsTotal + taxes;
 
@@ -54,7 +54,7 @@ Widget cartScreen(CartNotifier cartNotifier) {
                           "Items Total", "₹${itemsTotal.toStringAsFixed(2)}"),
                       buildSummaryRow("Total Discount",
                           "- ₹${totalDiscount.toStringAsFixed(2)}"),
-                      buildSummaryRow("Taxes", "₹${taxes.toStringAsFixed(2)}"),
+                      buildSummaryRow("GST", "₹${taxes.toStringAsFixed(2)}"),
                       const Divider(),
                       buildSummaryRow(
                         "To be Paid",

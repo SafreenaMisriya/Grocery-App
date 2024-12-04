@@ -3,12 +3,12 @@
 import 'dart:typed_data';
 import 'package:billing_system_app/model/cart_model.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:pdf/widgets.dart' as pw;
 
-Future<Uint8List> generateInvoicePdf(
-    List<CartItem> cartItems, double itemsTotal, double taxes, double toBePaid) async {
+Future<Uint8List> generateInvoicePdf(List<CartItem> cartItems,
+    double itemsTotal, double taxes, double toBePaid) async {
   final pdf = pw.Document();
-
 
   pdf.addPage(
     pw.Page(
@@ -21,13 +21,14 @@ Future<Uint8List> generateInvoicePdf(
               children: [
                 pw.Text(
                   "Hiba Hypermarket",
-                  style: pw.TextStyle(fontSize: 20, fontWeight: pw.FontWeight.bold),
+                  style: pw.TextStyle(
+                      fontSize: 20, fontWeight: pw.FontWeight.bold),
                 ),
-              
               ],
             ),
             pw.SizedBox(height: 8),
-            pw.Text("Date & Time: ${DateTime.now()}"),
+            pw.Text(
+                "Date & Time: ${DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now())}"),
             pw.SizedBox(height: 16),
 
             // Items List
@@ -37,7 +38,7 @@ Future<Uint8List> generateInvoicePdf(
                   .map((item) => [
                         item.name,
                         (item.unitPrice.toStringAsFixed(2)),
-                        "{item.quantity}",
+                        item.quantity,
                         ((item.unitPrice * item.quantity).toStringAsFixed(2)),
                       ])
                   .toList(),
@@ -51,7 +52,7 @@ Future<Uint8List> generateInvoicePdf(
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: [
                   pw.Text("Items Total: ${itemsTotal.toStringAsFixed(2)}"),
-                  pw.Text("Taxes: ${taxes.toStringAsFixed(2)}"),
+                  pw.Text("GST: ${taxes.toStringAsFixed(2)}"),
                   pw.Text("To be Paid: ${toBePaid.toStringAsFixed(2)}",
                       style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
                 ],

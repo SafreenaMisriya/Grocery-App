@@ -70,8 +70,10 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const CustomSizedBoxHeight(0.04),
-            Image.network(
-              "https://img.freepik.com/free-vector/grocery-store-sale-banner-template_23-2151089846.jpg?t=st=1733061781~exp=1733065381~hmac=1cf9ab1b47c9c9f8c187d13cb3db2a33432628e86bff03590c9e902bcfc0c7d5&w=1380",
+            Center(
+              child: Image.network(
+                "https://img.freepik.com/free-vector/grocery-store-sale-banner-template_23-2151089846.jpg?t=st=1733061781~exp=1733065381~hmac=1cf9ab1b47c9c9f8c187d13cb3db2a33432628e86bff03590c9e902bcfc0c7d5&w=1380",
+              ),
             ),
 
             const SizedBox(height: 16),
@@ -87,17 +89,19 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 8),
             SizedBox(
               height: 100.0,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                children: [
-                  categoryItem("Fruits", "assets/icons/fruits.png", context),
-                  categoryItem(
-                      "Vegetables", "assets/icons/vegetables.png", context),
-                  categoryItem("Grocery", "assets/icons/grocery.png", context),
-                  categoryItem("Beverages", "assets/icons/drinks.png", context),
-                  categoryItem("Edible Oil", "assets/icons/oil.png", context),
-                ],
+              child: Center(
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  children: [
+                    categoryItem("Fruits", "assets/icons/fruits.png", context),
+                    categoryItem(
+                        "Vegetables", "assets/icons/vegetables.png", context),
+                    categoryItem("Grocery", "assets/icons/grocery.png", context),
+                    categoryItem("Beverages", "assets/icons/drinks.png", context),
+                    categoryItem("Edible Oil", "assets/icons/oil.png", context),
+                  ],
+                ),
               ),
             ),
 
